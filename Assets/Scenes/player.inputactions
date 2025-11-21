@@ -1,0 +1,55 @@
+{
+    "version": 1,
+    "name": "player",
+    "maps": [
+        {
+            "name": "player",
+            "id": "8f09a905-472b-42d6-97e7-dc5ffb514081",
+            "actions": [
+                {
+                    "name": "Move2",
+                    "type": "Value",
+                    "id": "60e4a77a-a56d-41b7-9760-0f5a4adfc762",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "look",
+                    "type": "Value",
+                    "id": "7a69811d-aae3-4fcd-878f-e25451ab3ad1",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "55aa839c-4dbf-4ebc-8b09-d518a03e9d22",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c867fe8f-4263-4363-ada2-def1e856db2d",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
