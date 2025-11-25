@@ -7,9 +7,7 @@ public class RaycastClickDestroy : MonoBehaviour
 
     void Update()
     {
-        
         // 1. RAYCAST SIEMPRE DESDE EL CENTRO
-       
         Ray ray = new Ray(Camera.main.transform.position,
                           Camera.main.transform.forward);
 
@@ -17,34 +15,36 @@ public class RaycastClickDestroy : MonoBehaviour
 
         RaycastHit hit;
 
-        
         // 2. TOQUE EN PANTALLA (MOBILE)
-        
         if (Touchscreen.current != null &&
             Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
         {
             if (Physics.Raycast(ray, out hit, rayDistance))
             {
-                if (hit.collider.CompareTag("Trash"))
-                {
-                    Destroy(hit.collider.gameObject);
-                }
+                ProcesarHit(hit);
             }
         }
 
-        
         // 3. CLICK MOUSE (EDITOR)
-        
         if (Mouse.current != null &&
             Mouse.current.leftButton.wasPressedThisFrame)
         {
             if (Physics.Raycast(ray, out hit, rayDistance))
             {
-                if (hit.collider.CompareTag("Trash"))
-                {
-                    Destroy(hit.collider.gameObject);
-                }
+                ProcesarHit(hit);
             }
+        }
+    }
+
+    // Método auxiliar para no repetir lógica
+    void ProcesarHit(RaycastHit hit)
+    {
+        string tipo = hit.collider.tag;
+
+        if (tipo == "Metal" || tipo == "Plastico" || tipo == "Vidrio" || tipo == "Papel" || tipo == "Toxico")
+        {
+            ReciclajeContador.Registrar(tipo);
+            Destroy(hit.collider.gameObject);
         }
     }
 }

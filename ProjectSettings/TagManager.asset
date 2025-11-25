@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 3
   tags:
   - Trash
+  - Vidrio
+  - Papel
+  - Metal
+  - Plastico
+  - Toxicos
   layers:
   - Default
   - TransparentFX
