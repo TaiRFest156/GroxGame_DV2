@@ -42,6 +42,7 @@ public class RaycastClickDestroy : MonoBehaviour
         string tipo = hit.collider.tag;
 
         if (tipo == "Metal" || tipo == "Plastico" || tipo == "Vidrio" || tipo == "Papel" || tipo == "Toxico")
+
         {
             ReciclajeContador.Registrar(tipo);
             Destroy(hit.collider.gameObject);

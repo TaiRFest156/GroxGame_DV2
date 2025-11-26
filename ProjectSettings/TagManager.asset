@@ -9,6 +9,7 @@ TagManager:
   - Papel
   - Metal
   - Plastico
+  - Toxico
   - Toxicos
   layers:
   - Default
