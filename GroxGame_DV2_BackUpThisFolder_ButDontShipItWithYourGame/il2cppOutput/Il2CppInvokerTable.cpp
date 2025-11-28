@@ -50298,12 +50298,6 @@ void RuntimeInvoker_TrueRuntimeObject_PropertyName_tE4B4AAA58AF3BF2C0CD95509EB7B
 	*((RuntimeObject**)returnAddress) = ((Func)methodPointer)(obj, *((PropertyName_tE4B4AAA58AF3BF2C0CD95509EB7B786F096901C2*)args[0]), (void*)args[1], methodMetadata);
 }
 
-void RuntimeInvoker_TrueRuntimeObject_Single_t4530F2FF86FCB0DC29F35385CA1BD21BE294761C_RuntimeObject (Il2CppMethodPointer methodPointer, const RuntimeMethod* methodMetadata, void* obj, void** args, void* returnAddress)
-{
-	typedef RuntimeObject* (*Func)(void* obj, float p1, RuntimeObject* p2, const RuntimeMethod* method);
-	*((RuntimeObject**)returnAddress) = ((Func)methodPointer)(obj, *((float*)args[0]), (RuntimeObject*)args[1], methodMetadata);
-}
-
 void RuntimeInvoker_TrueRuntimeObject_StyleValues_t4AED947A53B84B62EF2B589A40B74911CA77D11A_Int32_t680FF22E76F6EFAD4375103CBBFFA0421349384C (Il2CppMethodPointer methodPointer, const RuntimeMethod* methodMetadata, void* obj, void** args, void* returnAddress)
 {
 	typedef RuntimeObject* (*Func)(void* obj, StyleValues_t4AED947A53B84B62EF2B589A40B74911CA77D11A p1, int32_t p2, const RuntimeMethod* method);
@@ -126733,7 +126727,7 @@ void RuntimeInvoker_FalseItem_t451B0F5ACBE74A12F984548E7F04A85270912DA9 (Il2CppM
 }
 
 IL2CPP_EXTERN_C const InvokerMethod g_Il2CppInvokerPointers[];
-const InvokerMethod g_Il2CppInvokerPointers[15168] = 
+const InvokerMethod g_Il2CppInvokerPointers[15167] = 
 {
 	RuntimeInvoker_F57671A1A271362DE5576D4120520430DEAD6EAE,
 	RuntimeInvoker_7C7502B48E2131BE322E25A4A5423517C2046CC6,
@@ -129550,7 +129544,6 @@ const InvokerMethod g_Il2CppInvokerPointers[15168] =
 	RuntimeInvoker_TrueRuntimeObject_RuntimeObject_Point64_tD7BE7158C46EF9ECBB538460A1860E7CFE2980A6,
 	RuntimeInvoker_TrueRuntimeObject_RuntimeObject_Single_t4530F2FF86FCB0DC29F35385CA1BD21BE294761C,
 	RuntimeInvoker_TrueRuntimeObject_PropertyName_tE4B4AAA58AF3BF2C0CD95509EB7B786F096901C2_VoidU2A_t104EAEFBD2D237A8C29618913DA9B4D99355E965,
-	RuntimeInvoker_TrueRuntimeObject_Single_t4530F2FF86FCB0DC29F35385CA1BD21BE294761C_RuntimeObject,
 	RuntimeInvoker_TrueRuntimeObject_StyleValues_t4AED947A53B84B62EF2B589A40B74911CA77D11A_Int32_t680FF22E76F6EFAD4375103CBBFFA0421349384C,
 	RuntimeInvoker_TrueRuntimeObject_UInt16_tF4C148C876015C212FD72652D0B6ED8CC247A455_Byte_t94D9231AC217BE4D2E004C4CD32DF6D099EA41A3,
 	RuntimeInvoker_TrueRuntimeObject_UInt16_tF4C148C876015C212FD72652D0B6ED8CC247A455_Int32_t680FF22E76F6EFAD4375103CBBFFA0421349384C,

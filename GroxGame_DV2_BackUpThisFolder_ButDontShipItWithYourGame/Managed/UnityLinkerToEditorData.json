@@ -76,6 +76,7 @@
           {
             "name": "AudioBehaviour",
             "scenes": [
+              "Assets/Scenes/Nivel_2.unity",
               "Assets/Scenes/Nivel1.unity",
               "Assets/Scenes/SampleScene.unity",
               "Assets/Scenes/Start_Menu.unity",
@@ -93,6 +94,7 @@
           {
             "name": "AudioListener",
             "scenes": [
+              "Assets/Scenes/Nivel_2.unity",
               "Assets/Scenes/Nivel1.unity",
               "Assets/Scenes/SampleScene.unity",
               "Assets/Scenes/Start_Menu.unity",
@@ -151,6 +153,7 @@
           {
             "name": "Camera",
             "scenes": [
+              "Assets/Scenes/Nivel_2.unity",
               "Assets/Scenes/Nivel1.unity",
               "Assets/Scenes/SampleScene.unity",
               "Assets/Scenes/Start_Menu.unity",
@@ -174,6 +177,7 @@
           {
             "name": "Cubemap",
             "scenes": [
+              "Assets/Scenes/Nivel_2.unity",
               "Assets/Scenes/Nivel1.unity",
               "Assets/Scenes/SampleScene.unity",
               "Assets/Scenes/Start_Menu.unity",
@@ -197,6 +201,7 @@
           {
             "name": "EditorExtension",
             "scenes": [
+              "Assets/Scenes/Nivel_2.unity",
               "Assets/Scenes/Nivel1.unity",
               "Assets/Scenes/SampleScene.unity",
               "Assets/Scenes/Start_Menu.unity",
@@ -214,6 +219,7 @@
           {
             "name": "GameObject",
             "scenes": [
+              "Assets/Scenes/Nivel_2.unity",
               "Assets/Scenes/Nivel1.unity",
               "Assets/Scenes/SampleScene.unity",
               "Assets/Scenes/Start_Menu.unity",
@@ -243,6 +249,7 @@
           {
             "name": "LevelGameManager",
             "scenes": [
+              "Assets/Scenes/Nivel_2.unity",
               "Assets/Scenes/Nivel1.unity",
               "Assets/Scenes/SampleScene.unity",
               "Assets/Scenes/Start_Menu.unity",
@@ -254,6 +261,7 @@
           {
             "name": "Light",
             "scenes": [
+              "Assets/Scenes/Nivel_2.unity",
               "Assets/Scenes/Nivel1.unity",
               "Assets/Scenes/SampleScene.unity",
               "Assets/Scenes/Start_Menu.unity",
@@ -277,6 +285,7 @@
           {
             "name": "LightmapSettings",
             "scenes": [
+              "Assets/Scenes/Nivel_2.unity",
               "Assets/Scenes/Nivel1.unity",
               "Assets/Scenes/SampleScene.unity",
               "Assets/Scenes/Start_Menu.unity",
@@ -294,6 +303,7 @@
           {
             "name": "Material",
             "scenes": [
+              "Assets/Scenes/Nivel_2.unity",
               "Assets/Scenes/Nivel1.unity",
               "Assets/Scenes/SampleScene.unity",
               "Assets/Scenes/Start_Menu.unity",
@@ -305,7 +315,9 @@
           {
             "name": "Mesh",
             "scenes": [
-              "Assets/Scenes/SampleScene.unity"
+              "Assets/Scenes/Nivel_2.unity",
+              "Assets/Scenes/SampleScene.unity",
+              "Assets/Scenes/Start_Menu.unity"
             ],
             "dependencyType": 0,
             "icon": null
@@ -313,7 +325,9 @@
           {
             "name": "MeshFilter",
             "scenes": [
-              "Assets/Scenes/SampleScene.unity"
+              "Assets/Scenes/Nivel_2.unity",
+              "Assets/Scenes/SampleScene.unity",
+              "Assets/Scenes/Start_Menu.unity"
             ],
             "dependencyType": 0,
             "icon": null
@@ -321,7 +335,9 @@
           {
             "name": "MeshRenderer",
             "scenes": [
-              "Assets/Scenes/SampleScene.unity"
+              "Assets/Scenes/Nivel_2.unity",
+              "Assets/Scenes/SampleScene.unity",
+              "Assets/Scenes/Start_Menu.unity"
             ],
             "dependencyType": 0,
             "icon": null
@@ -329,6 +345,7 @@
           {
             "name": "MonoBehaviour",
             "scenes": [
+              "Assets/Scenes/Nivel_2.unity",
               "Assets/Scenes/SampleScene.unity",
               "Assets/Scenes/Start_Menu.unity",
               "Assets/Scenes/testNivel2.unity"
@@ -345,6 +362,7 @@
           {
             "name": "MonoScript",
             "scenes": [
+              "Assets/Scenes/Nivel_2.unity",
               "Assets/Scenes/SampleScene.unity",
               "Assets/Scenes/Start_Menu.unity",
               "Assets/Scenes/testNivel2.unity"
@@ -355,6 +373,7 @@
           {
             "name": "NamedObject",
             "scenes": [
+              "Assets/Scenes/Nivel_2.unity",
               "Assets/Scenes/Nivel1.unity",
               "Assets/Scenes/SampleScene.unity",
               "Assets/Scenes/Start_Menu.unity",
@@ -390,6 +409,7 @@
           {
             "name": "RectTransform",
             "scenes": [
+              "Assets/Scenes/Nivel_2.unity",
               "Assets/Scenes/SampleScene.unity",
               "Assets/Scenes/Start_Menu.unity",
               "Assets/Scenes/testNivel2.unity"
@@ -406,6 +426,7 @@
           {
             "name": "RenderSettings",
             "scenes": [
+              "Assets/Scenes/Nivel_2.unity",
               "Assets/Scenes/Nivel1.unity",
               "Assets/Scenes/SampleScene.unity",
               "Assets/Scenes/Start_Menu.unity",
@@ -441,6 +462,7 @@
           {
             "name": "Shader",
             "scenes": [
+              "Assets/Scenes/Nivel_2.unity",
               "Assets/Scenes/Nivel1.unity",
               "Assets/Scenes/SampleScene.unity",
               "Assets/Scenes/Start_Menu.unity",
@@ -464,6 +486,7 @@
           {
             "name": "Sprite",
             "scenes": [
+              "Assets/Scenes/Nivel_2.unity",
               "Assets/Scenes/SampleScene.unity",
               "Assets/Scenes/Start_Menu.unity"
             ],
@@ -966,7 +989,9 @@
           {
             "name": "BoxCollider",
             "scenes": [
-              "Assets/Scenes/SampleScene.unity"
+              "Assets/Scenes/Nivel_2.unity",
+              "Assets/Scenes/SampleScene.unity",
+              "Assets/Scenes/Start_Menu.unity"
             ],
             "dependencyType": 0,
             "icon": null
@@ -994,7 +1019,8 @@
           {
             "name": "MeshCollider",
             "scenes": [
-              "Assets/Scenes/SampleScene.unity"
+              "Assets/Scenes/SampleScene.unity",
+              "Assets/Scenes/Start_Menu.unity"
             ],
             "dependencyType": 0,
             "icon": null
@@ -1008,7 +1034,9 @@
           {
             "name": "Rigidbody",
             "scenes": [
-              "Assets/Scenes/SampleScene.unity"
+              "Assets/Scenes/Nivel_2.unity",
+              "Assets/Scenes/SampleScene.unity",
+              "Assets/Scenes/Start_Menu.unity"
             ],
             "dependencyType": 0,
             "icon": null
@@ -1016,7 +1044,9 @@
           {
             "name": "SphereCollider",
             "scenes": [
-              "Assets/Scenes/SampleScene.unity"
+              "Assets/Scenes/Nivel_2.unity",
+              "Assets/Scenes/SampleScene.unity",
+              "Assets/Scenes/Start_Menu.unity"
             ],
             "dependencyType": 0,
             "icon": null
@@ -1438,6 +1468,7 @@
           {
             "name": "Canvas",
             "scenes": [
+              "Assets/Scenes/Nivel_2.unity",
               "Assets/Scenes/SampleScene.unity",
               "Assets/Scenes/Start_Menu.unity",
               "Assets/Scenes/testNivel2.unity"
@@ -1454,6 +1485,7 @@
           {
             "name": "CanvasRenderer",
             "scenes": [
+              "Assets/Scenes/Nivel_2.unity",
               "Assets/Scenes/SampleScene.unity",
               "Assets/Scenes/Start_Menu.unity",
               "Assets/Scenes/testNivel2.unity"

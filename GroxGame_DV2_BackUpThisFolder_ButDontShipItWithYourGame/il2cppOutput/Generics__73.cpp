@@ -8417,7 +8417,7 @@ inline void Span_1__ctor_m387ED7C1B291A33DF98CF62A51CF5B4AFD36F8E9_inline (Span_
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 50756
+// Method Definition Index: 50759
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t Range_get_End_mAEE768138A88357ECC6A2B20C32F6DF0E1D8D178_gshared (Range_t4F5C1371FE16FFB75A75FD3505EDBC28C326AEB7* __this, const RuntimeMethod* method) 
 {
 	{
@@ -8436,7 +8436,7 @@ IL2CPP_EXTERN_C  int32_t Range_get_End_mAEE768138A88357ECC6A2B20C32F6DF0E1D8D178
 	_returnValue = Range_get_End_mAEE768138A88357ECC6A2B20C32F6DF0E1D8D178(_thisAdjusted, method);
 	return _returnValue;
 }
-// Method Definition Index: 50757
+// Method Definition Index: 50760
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Range__ctor_m92B36FCA750BF22616741935CFD06A8DF8F9E79D_gshared (Range_t4F5C1371FE16FFB75A75FD3505EDBC28C326AEB7* __this, int32_t ___0_start, int32_t ___1_count, const RuntimeMethod* method) 
 {
 	{
@@ -8457,7 +8457,7 @@ IL2CPP_EXTERN_C  void Range__ctor_m92B36FCA750BF22616741935CFD06A8DF8F9E79D_Adju
 	_thisAdjusted = reinterpret_cast<Range_t4F5C1371FE16FFB75A75FD3505EDBC28C326AEB7*>(__this + _offset);
 	Range__ctor_m92B36FCA750BF22616741935CFD06A8DF8F9E79D(_thisAdjusted, ___0_start, ___1_count, method);
 }
-// Method Definition Index: 50758
+// Method Definition Index: 50761
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* Range_ToString_m0281401192EDE017D7E737F097418FFC713CF66E_gshared (Range_t4F5C1371FE16FFB75A75FD3505EDBC28C326AEB7* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
