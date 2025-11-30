@@ -46,6 +46,8 @@ public class RaycastClickDestroy : MonoBehaviour
         {
             ReciclajeContador.Registrar(tipo);
             Destroy(hit.collider.gameObject);
+            ParticlePool.Instance.PlayEffect(hit.point);
+
         }
     }
 }

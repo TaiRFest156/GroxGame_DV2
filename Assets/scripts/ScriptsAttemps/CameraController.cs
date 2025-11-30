@@ -85,7 +85,7 @@ public class CameraController : MonoBehaviour
     {
         Vector3 g = gyro.rotationRateUnbiased;
 
-        // Convertir a rotación (PUBG style)
+        // Convertir a rotación 
         Vector3 gyroRot = new Vector3(-g.x, -g.y, 0) * gyroSensitivity;
 
         // DEADZONE: evita que gire solo
@@ -110,5 +110,13 @@ public class CameraController : MonoBehaviour
         rotX = Mathf.Clamp(rotX, minY, maxY);
 
         transform.localRotation = Quaternion.Euler(rotX, rotY, 0);
+    }
+    public void SetGyroSensitivity(float value)
+    {
+        gyroSensitivity = value;
+    }
+    public float GetGyroSensitivity()
+    {
+        return gyroSensitivity;
     }
 }
