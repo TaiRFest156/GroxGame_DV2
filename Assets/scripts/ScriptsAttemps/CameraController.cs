@@ -59,6 +59,10 @@ public class CameraController : MonoBehaviour
 
         foreach (Touch t in Input.touches)
         {
+            // Solo procesar si el toque está en la mitad derecha de la pantalla
+            if (t.position.x < Screen.width / 2)
+                continue;
+
             if (t.phase == TouchPhase.Began)
             {
                 if (!EventSystem.current.IsPointerOverGameObject(t.fingerId))
@@ -80,6 +84,7 @@ public class CameraController : MonoBehaviour
             }
         }
     }
+
 
     void HandleGyro()
     {

@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.UI;
 
 public class ReciclajeUI : MonoBehaviour
 {
@@ -12,8 +13,12 @@ public class ReciclajeUI : MonoBehaviour
     public TextMeshProUGUI textoPuntajeFinal;
     public float tiempoAnimacionPuntaje = 2f;
     public PanelMover panelMover;
+    // necesario para Button
 
-    private void Awake()
+[Header("Botón de pausa")]
+public Button botonPause;
+
+private void Awake()
     {
         if (Instance != null && Instance != this)
         {
@@ -46,6 +51,8 @@ public class ReciclajeUI : MonoBehaviour
             };
 
             panelMover.ActivarMovimiento();
+            if (botonPause != null)
+                botonPause.interactable = false;
         }
     }
 

@@ -14,15 +14,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "look",
-                    "type": "Value",
-                    "id": "7a69811d-aae3-4fcd-878f-e25451ab3ad1",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -34,17 +25,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Move2",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c867fe8f-4263-4363-ada2-def1e856db2d",
-                    "path": "<Gamepad>/rightStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "look",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
