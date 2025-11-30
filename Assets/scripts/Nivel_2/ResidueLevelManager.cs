@@ -45,21 +45,15 @@ public class ResidueLevelManager : MonoBehaviour
     {
         Vector3 tilt = Input.acceleration;
 
-        // Giroscopio
         bool leftTilt = tilt.x < -0.35f;
         bool rightTilt = tilt.x > 0.35f;
         bool upTilt = tilt.y > 0.45f;
 
-        // Teclado
-        bool leftKey = Input.GetKeyDown(KeyCode.A);
-        bool rightKey = Input.GetKeyDown(KeyCode.D);
-        bool upKey = Input.GetKeyDown(KeyCode.W);
-
-        if (!residueThrown && (leftTilt || leftKey))
+        if (leftTilt)
             StartCoroutine(ThrowResidue(targetLeft, ResidueKind.Papel));
-        else if (!residueThrown && (rightTilt || rightKey))
+        else if (rightTilt)
             StartCoroutine(ThrowResidue(targetRight, ResidueKind.Plastico));
-        else if (!residueThrown && (upTilt || upKey))
+        else if (upTilt)
             StartCoroutine(ThrowResidue(targetUp, ResidueKind.Vidrio));
     }
 
@@ -69,7 +63,7 @@ public class ResidueLevelManager : MonoBehaviour
 
         Vector3 startPos = currentResidueInstance.transform.position;
         Vector3 endPos = targetPoint.position;
-        endPos.z = startPos.z; // Mantener el Z original para que no se "salga" de cámara
+        endPos.z = startPos.z;
 
         float t = 0f;
         while (t < 1f)
@@ -80,10 +74,8 @@ public class ResidueLevelManager : MonoBehaviour
             yield return null;
         }
 
-        // Asegurar posición final exacta
         currentResidueInstance.transform.position = endPos;
 
-        // Puntaje
         if (currentResidueData.kind == directionKind)
             score += currentResidueData.scoreValue;
         else

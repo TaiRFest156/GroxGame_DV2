@@ -33,6 +33,6 @@ public class SceneLoader : MonoBehaviour
     public void CargarSiguienteEscena()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("testNivel2"); // nombre exacto de la escena
+        SceneManager.LoadScene("Nivel_2"); // nombre exacto de la escena
     }
 }
