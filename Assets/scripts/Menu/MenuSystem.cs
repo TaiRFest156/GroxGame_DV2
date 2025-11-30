@@ -6,7 +6,7 @@ public class MenuSystem : MonoBehaviour
 {
     public void Play()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("LevelSelector");
     }
 
     public void Exit()
