@@ -32,6 +32,10 @@ public class SceneLoader : MonoBehaviour
     // Método público que se conecta al botón Next
     public void CargarSiguienteEscena()
     {
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.clickSound);
+        }
         Time.timeScale = 1f;
         SceneManager.LoadScene("Nivel_2"); // nombre exacto de la escena
     }

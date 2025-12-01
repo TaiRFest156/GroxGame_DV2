@@ -57,11 +57,17 @@ public class ResidueLevelManager : MonoBehaviour
             StartCoroutine(ThrowResidue(targetUp, ResidueKind.Vidrio));
     }
 
+    
+
+    // --- Dentro de ResidueLevelManager.cs ---
+
     IEnumerator ThrowResidue(Transform targetPoint, ResidueKind directionKind)
     {
         residueThrown = true;
 
         Vector3 startPos = currentResidueInstance.transform.position;
+
+        // ESTA LÍNEA DE DECLARACIÓN FALTABA:
         Vector3 endPos = targetPoint.position;
         endPos.z = startPos.z;
 
@@ -74,12 +80,32 @@ public class ResidueLevelManager : MonoBehaviour
             yield return null;
         }
 
+        // ESTA LÍNEA FALTABA:
         currentResidueInstance.transform.position = endPos;
 
-        if (currentResidueData.kind == directionKind)
+        // LÓGICA DE ACIERTO/FALLO Y AUDIO (Lo que agregamos)
+        bool isCorrect = currentResidueData.kind == directionKind;
+
+        if (isCorrect)
+        {
             score += currentResidueData.scoreValue;
+
+            // Sonido de ACIERTO
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.correctTrashSound);
+            }
+        }
         else
+        {
             score += currentResidueData.penaltyValue;
+
+            // Sonido de FALLO
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.wrongTrashSound);
+            }
+        }
 
         UpdateUI();
 

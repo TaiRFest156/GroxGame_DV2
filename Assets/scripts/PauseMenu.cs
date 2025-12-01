@@ -22,23 +22,45 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause()
     {
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.clickSound);
+        }
         PausePanel.SetActive(true);
         Time.timeScale = 0;
     }
 
     public void Continue()
     {
+        // --- Sonido de Click ---
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.clickSound);
+        }
+        // ------------------------
         PausePanel.SetActive(false);
         Time.timeScale = 1;
     }
 
     public void ExitGame()
     {
+        // --- Sonido de Click ---
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.clickSound);
+        }
+        // ------------------------
         Application.Quit();
     }
 
     public void RestartLevel()
     {
+        // --- Sonido de Click ---
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.clickSound);
+        }
+        // ------------------------
         PausePanel.SetActive(false);
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

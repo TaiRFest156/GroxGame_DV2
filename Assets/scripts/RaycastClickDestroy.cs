@@ -42,12 +42,18 @@ public class RaycastClickDestroy : MonoBehaviour
         string tipo = hit.collider.tag;
 
         if (tipo == "Metal" || tipo == "Plastico" || tipo == "Vidrio" || tipo == "Papel" || tipo == "Toxico")
-
         {
+            // 1. Lógica del juego (Contador, Destruir)
             ReciclajeContador.Registrar(tipo);
             Destroy(hit.collider.gameObject);
             ParticlePool.Instance.PlayEffect(hit.point);
 
+            // 2. Lógica del Audio (Suena al ACERTAR)
+            if (AudioManager.Instance != null)
+            {
+                // Usamos el sonido de disparo (shootSound)
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.shootSound);
+            }
         }
     }
 }

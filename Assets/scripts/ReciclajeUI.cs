@@ -33,6 +33,16 @@ private void Awake()
 
     public void MostrarResultados()
     {
+        // --- LUGAR 1: Sonido de Final de Partida/Éxito ---
+        // Este sonido se reproduce inmediatamente al llamar a MostrarResultados().
+        if (AudioManager.Instance != null)
+        {
+            // Se recomienda usar un nuevo clip para "Victoria" o "Resultados Finales"
+            // pero usaremos 'correctTrashSound' por ahora como se indicó antes.
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.scoreSound);
+        }
+        // --------------------------------------------------
+
         int puntajeFinal = ReciclajeContador.CalcularPuntajeTotal();
 
         if (panelMover != null)
@@ -50,6 +60,7 @@ private void Awake()
                 StartCoroutine(AnimarPuntaje(puntajeFinal));
             };
 
+            // El panel comienza a moverse después de que el sonido inicial ha sonado.
             panelMover.ActivarMovimiento();
             if (botonPause != null)
                 botonPause.interactable = false;
