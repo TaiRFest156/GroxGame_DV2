@@ -46,7 +46,7 @@ public class VictoryManager : MonoBehaviour
     }
 
     // Activar el panel de victoria y mostrar los datos
-    private void ShowVictoryPanel()
+    public void ShowVictoryPanel()
     {
         victoryPanel.SetActive(true);  // Mostrar el panel de victoria
 
@@ -55,4 +55,6 @@ public class VictoryManager : MonoBehaviour
         correctResiduosText.text = "Residuos Aciertos: " + correctResiduos;
         wrongResiduosText.text = "Residuos Errores: " + wrongResiduos;
     }
+
+
 }

@@ -16,7 +16,7 @@ public class ResidueLevelManager : MonoBehaviour
     public Transform targetUp;
 
     [Header("Gameplay")]
-    public float levelDuration = 90f;
+    public float levelDuration = 30f;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI timerText;
 
@@ -28,9 +28,9 @@ public class ResidueLevelManager : MonoBehaviour
 
     public ParticleSystem residueParticles;
 
-    private VictoryManager victoryManager;
+    public VictoryManager victoryManager;
 
-    private DefeatManager defeatManager;
+    public DefeatManager defeatManager;
 
 
 
@@ -52,6 +52,31 @@ public class ResidueLevelManager : MonoBehaviour
 
         if (!residueThrown && currentResidueInstance != null)
             CheckTilt();
+
+        if (!residueThrown && currentResidueInstance != null)
+        {
+            // Detectar giroscopio
+            CheckTilt();
+
+            // Detectar teclado
+            CheckKeyboardInput();
+        }
+    }
+
+    void CheckKeyboardInput()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            StartCoroutine(ThrowResidue(targetLeft, ResidueKind.Papel)); // Lanzar hacia la izquierda (A)
+        }
+        else if (Input.GetKeyDown(KeyCode.W))
+        {
+            StartCoroutine(ThrowResidue(targetUp, ResidueKind.Vidrio)); // Lanzar hacia arriba (W)
+        }
+        else if (Input.GetKeyDown(KeyCode.D))
+        {
+            StartCoroutine(ThrowResidue(targetRight, ResidueKind.Plastico)); // Lanzar hacia la derecha (D)
+        }
     }
 
     void CheckTilt()
@@ -186,6 +211,7 @@ void UpdateTimer()
 
     if (timeRemaining <= 0)
     {
+        CheckGameOver();
         Destroy(currentResidueInstance);
         enabled = false;
     }
@@ -199,6 +225,22 @@ void UpdateTimer()
     {
         return timeRemaining;
     }
+
+
+    void CheckGameOver()
+    {
+        // Verificar si el puntaje es suficiente para ganar
+        if (score >= 1050)
+        {
+            victoryManager.ShowVictoryPanel();
+        }
+        // Verificar si el puntaje es demasiado bajo para perder
+        else if (score <= 1000)
+        {
+            defeatManager.CheckForTimeOutDefeat();
+        }
+    }
+
 }
 
 

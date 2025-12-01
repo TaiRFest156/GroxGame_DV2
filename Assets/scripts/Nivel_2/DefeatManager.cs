@@ -5,7 +5,7 @@ public class DefeatManager : MonoBehaviour
 {
     private int consecutiveMistakes = 0;  // Para contar los errores consecutivos
     private int maxConsecutiveMistakes = 4;  // El límite de errores seguidos
-    private int minScoreToLose = 900;  // Puntaje mínimo para perder
+    private int minScoreToLose = 1000;  // Puntaje mínimo para perder
 
     private ResidueLevelManager levelManager;
 
