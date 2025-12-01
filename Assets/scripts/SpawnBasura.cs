@@ -45,12 +45,21 @@ public class SpawnBasura : MonoBehaviour
                 tiempoActual -= reduccionTiempo;
             }
         }
+
         SceneLoader loader = Object.FindFirstObjectByType<SceneLoader>();
         if (loader != null)
         {
             loader.OnSpawnerFinished();
+
+            //  Aquí verificamos si recogió menos de 5 basuras
+            if (!ReciclajeContador.RecogioMinimoBasuras(5))
+            {
+                PlayerPrefs.SetString("EscenaAnterior", UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Derrota");
+            }
         }
     }
+
 
     void SpawnearBasura()
     {

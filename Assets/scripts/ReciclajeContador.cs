@@ -49,4 +49,15 @@ public static class ReciclajeContador
         }
         return total;
     }
+
+    //  Nueva función: verificar si se recogieron al menos 5 basuras
+    public static bool RecogioMinimoBasuras(int minimo = 5)
+    {
+        int totalRecogidas = 0;
+        foreach (var cantidad in conteo.Values)
+        {
+            totalRecogidas += cantidad;
+        }
+        return totalRecogidas >= minimo;
+    }
 }
