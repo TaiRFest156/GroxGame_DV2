@@ -11,6 +11,7 @@ TagManager:
   - Plastico
   - Toxico
   - Toxicos
+  - Organico
   layers:
   - Default
   - TransparentFX

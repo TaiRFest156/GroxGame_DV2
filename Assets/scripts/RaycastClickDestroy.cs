@@ -19,9 +19,14 @@ public class RaycastClickDestroy : MonoBehaviour
         if (Touchscreen.current != null &&
             Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
         {
-            if (Physics.Raycast(ray, out hit, rayDistance))
+            //  Verificar que el toque esté en la parte derecha de la pantalla
+            Vector2 touchPos = Touchscreen.current.primaryTouch.position.ReadValue();
+            if (touchPos.x > Screen.width / 2) // mitad derecha
             {
-                ProcesarHit(hit);
+                if (Physics.Raycast(ray, out hit, rayDistance))
+                {
+                    ProcesarHit(hit);
+                }
             }
         }
 
@@ -29,9 +34,14 @@ public class RaycastClickDestroy : MonoBehaviour
         if (Mouse.current != null &&
             Mouse.current.leftButton.wasPressedThisFrame)
         {
-            if (Physics.Raycast(ray, out hit, rayDistance))
+            //  También podés simular restricción con el mouse
+            Vector2 mousePos = Mouse.current.position.ReadValue();
+            if (mousePos.x > Screen.width / 2) // mitad derecha
             {
-                ProcesarHit(hit);
+                if (Physics.Raycast(ray, out hit, rayDistance))
+                {
+                    ProcesarHit(hit);
+                }
             }
         }
     }
@@ -41,13 +51,12 @@ public class RaycastClickDestroy : MonoBehaviour
     {
         string tipo = hit.collider.tag;
 
-        if (tipo == "Metal" || tipo == "Plastico" || tipo == "Vidrio" || tipo == "Papel" || tipo == "Toxico")
-
+        if (tipo == "Metal" || tipo == "Plastico" || tipo == "Vidrio" ||
+            tipo == "Papel" || tipo == "Toxico" || tipo == "Organico")
         {
             ReciclajeContador.Registrar(tipo);
             Destroy(hit.collider.gameObject);
             ParticlePool.Instance.PlayEffect(hit.point);
-
         }
     }
 }

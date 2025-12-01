@@ -10,7 +10,8 @@ public static class ReciclajeContador
         { "Plastico", 0 },
         { "Vidrio", 0 },
         { "Toxico", 0 },
-        { "Papel", 0 }
+        { "Papel", 0 },
+        { "Organico", 0 }
     };
 
     // Valor por unidad de cada tipo
@@ -18,8 +19,9 @@ public static class ReciclajeContador
     {
         { "Metal", 4500 },
         { "Plastico", 3000 },
-        { "Vidrio", 5900 },
-        { "Toxico", 10000 },
+        { "Vidrio", 10900 },
+        { "Toxico", 10040 },
+        { "Organico",20000 },
         { "Papel", 12500 }
     };
 
