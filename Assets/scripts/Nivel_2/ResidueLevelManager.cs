@@ -31,6 +31,8 @@ public class ResidueLevelManager : MonoBehaviour
         Input.gyro.enabled = true;
         timeRemaining = levelDuration;
         SpawnResidue();
+        Time.timeScale = 1f; 
+     
     }
 
     void Update()

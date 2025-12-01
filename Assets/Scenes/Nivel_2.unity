@@ -802,7 +802,7 @@ MonoBehaviour:
   targetLeft: {fileID: 1577004492}
   targetRight: {fileID: 619202870}
   targetUp: {fileID: 294944858}
-  levelDuration: 90
+  levelDuration: 30
   scoreText: {fileID: 2071834779}
   timerText: {fileID: 114748172}
 --- !u!4 &1134979836
