@@ -26,25 +26,69 @@ public class ResidueLevelManager : MonoBehaviour
     private ResidueData currentResidueData;
     private bool residueThrown = false;
 
+    public ParticleSystem residueParticles;
+
+    // Variable para saber si usar giroscopio o acelerómetro
+    private bool useGyroscope = false; // Si es true, usar giroscopio. Si es false, usar acelerómetro.
+
+    // Panel de selección de control
+    public GameObject controlPanel; // Este es el panel con los botones de selección de control
+
     void Start()
     {
-        Input.gyro.enabled = true;
+        // Congelar el tiempo al inicio del nivel
+        Time.timeScale = 0f;  // Congelar el juego para esperar la selección del control
+
         timeRemaining = levelDuration;
-        SpawnResidue();
-        Time.timeScale = 1f; 
-     
+        // Mostrar el panel de control (se debería activar en la UI)
+        controlPanel.SetActive(true);
+
+        // Si el giroscopio no está disponible, forzamos el uso del acelerómetro
+        if (!SystemInfo.supportsGyroscope)
+        {
+            useGyroscope = false;
+            Debug.LogWarning("Giroscopio no soportado. Usando acelerómetro.");
+        }
     }
 
     void Update()
     {
-        UpdateTimer();
+        // Si el juego no está congelado, seguimos actualizando el tiempo y la jugabilidad
+        if (Time.timeScale == 1f)
+        {
+            UpdateTimer();
 
-        if (!residueThrown && currentResidueInstance != null)
-            CheckTilt();
+            if (!residueThrown && currentResidueInstance != null)
+            {
+                // Si el giroscopio está habilitado, se usa Input.gyro. Si no, usamos Input.acceleration
+                if (useGyroscope)
+                    CheckGyroscope();
+                else
+                    CheckAccelerometer();
+            }
+        }
     }
 
-    void CheckTilt()
+    void CheckGyroscope()
     {
+        // Obtén la rotación del giroscopio (puedes ajustar estos valores según tu necesidad)
+        Vector3 gyroRotation = Input.gyro.rotationRateUnbiased;
+
+        bool leftTilt = gyroRotation.x < -0.35f;
+        bool rightTilt = gyroRotation.x > 0.35f;
+        bool upTilt = gyroRotation.y > 0.45f;
+
+        if (leftTilt)
+            StartCoroutine(ThrowResidue(targetLeft, ResidueKind.Papel));
+        else if (rightTilt)
+            StartCoroutine(ThrowResidue(targetRight, ResidueKind.Plastico));
+        else if (upTilt)
+            StartCoroutine(ThrowResidue(targetUp, ResidueKind.Vidrio));
+    }
+
+    void CheckAccelerometer()
+    {
+        // Obtén los valores del acelerómetro
         Vector3 tilt = Input.acceleration;
 
         bool leftTilt = tilt.x < -0.35f;
@@ -67,6 +111,13 @@ public class ResidueLevelManager : MonoBehaviour
         Vector3 endPos = targetPoint.position;
         endPos.z = startPos.z;
 
+        // Activar partículas del residuo durante el movimiento
+        ParticleSystem residueParticleSystem = currentResidueInstance.GetComponent<ParticleSystem>();
+        if (residueParticleSystem != null)
+        {
+            residueParticleSystem.Play();
+        }
+
         float t = 0f;
         while (t < 1f)
         {
@@ -77,6 +128,19 @@ public class ResidueLevelManager : MonoBehaviour
         }
 
         currentResidueInstance.transform.position = endPos;
+
+        // Detener las partículas cuando llegue al tacho
+        if (residueParticleSystem != null)
+        {
+            residueParticleSystem.Stop();
+        }
+
+        // Activar las partículas al llegar al tacho
+        if (residueParticles != null)
+        {
+            residueParticles.transform.position = endPos;  // Mover las partículas al tacho
+            residueParticles.Play();  // Reproducir el efecto de partículas
+        }
 
         if (currentResidueData.kind == directionKind)
             score += currentResidueData.scoreValue;
@@ -116,5 +180,23 @@ public class ResidueLevelManager : MonoBehaviour
             Destroy(currentResidueInstance);
             enabled = false;
         }
+    }
+
+    // Función para activar el giroscopio
+    public void ActivateGyroscope()
+    {
+        useGyroscope = true;
+        controlPanel.SetActive(false); // Ocultar el panel de control (mini fondo)
+        Time.timeScale = 1f;  // Reanudar el juego
+        Debug.Log("Control: Giroscopio");
+    }
+
+    // Función para activar el acelerómetro
+    public void ActivateAccelerometer()
+    {
+        useGyroscope = false;
+        controlPanel.SetActive(false); // Ocultar el panel de control (mini fondo)
+        Time.timeScale = 1f;  // Reanudar el juego
+        Debug.Log("Control: Acelerómetro");
     }
 }
