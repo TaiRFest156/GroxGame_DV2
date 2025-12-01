@@ -26,23 +26,69 @@ public class ResidueLevelManager : MonoBehaviour
     private ResidueData currentResidueData;
     private bool residueThrown = false;
 
+    public ParticleSystem residueParticles;
+
+    // Variable para saber si usar giroscopio o acelerï¿½metro
+    private bool useGyroscope = false; // Si es true, usar giroscopio. Si es false, usar acelerï¿½metro.
+
+    // Panel de selecciï¿½n de control
+    public GameObject controlPanel; // Este es el panel con los botones de selecciï¿½n de control
+
     void Start()
     {
-        Input.gyro.enabled = true;
+        // Congelar el tiempo al inicio del nivel
+        Time.timeScale = 0f;  // Congelar el juego para esperar la selecciï¿½n del control
+
         timeRemaining = levelDuration;
-        SpawnResidue();
+        // Mostrar el panel de control (se deberï¿½a activar en la UI)
+        controlPanel.SetActive(true);
+
+        // Si el giroscopio no estï¿½ disponible, forzamos el uso del acelerï¿½metro
+        if (!SystemInfo.supportsGyroscope)
+        {
+            useGyroscope = false;
+            Debug.LogWarning("Giroscopio no soportado. Usando acelerï¿½metro.");
+        }
     }
 
     void Update()
     {
-        UpdateTimer();
+        // Si el juego no estï¿½ congelado, seguimos actualizando el tiempo y la jugabilidad
+        if (Time.timeScale == 1f)
+        {
+            UpdateTimer();
 
-        if (!residueThrown && currentResidueInstance != null)
-            CheckTilt();
+            if (!residueThrown && currentResidueInstance != null)
+            {
+                // Si el giroscopio estï¿½ habilitado, se usa Input.gyro. Si no, usamos Input.acceleration
+                if (useGyroscope)
+                    CheckGyroscope();
+                else
+                    CheckAccelerometer();
+            }
+        }
     }
 
-    void CheckTilt()
+    void CheckGyroscope()
     {
+        // Obtï¿½n la rotaciï¿½n del giroscopio (puedes ajustar estos valores segï¿½n tu necesidad)
+        Vector3 gyroRotation = Input.gyro.rotationRateUnbiased;
+
+        bool leftTilt = gyroRotation.x < -0.35f;
+        bool rightTilt = gyroRotation.x > 0.35f;
+        bool upTilt = gyroRotation.y > 0.45f;
+
+        if (leftTilt)
+            StartCoroutine(ThrowResidue(targetLeft, ResidueKind.Papel));
+        else if (rightTilt)
+            StartCoroutine(ThrowResidue(targetRight, ResidueKind.Plastico));
+        else if (upTilt)
+            StartCoroutine(ThrowResidue(targetUp, ResidueKind.Vidrio));
+    }
+
+    void CheckAccelerometer()
+    {
+        // Obtï¿½n los valores del acelerï¿½metro
         Vector3 tilt = Input.acceleration;
 
         bool leftTilt = tilt.x < -0.35f;
@@ -67,9 +113,16 @@ public class ResidueLevelManager : MonoBehaviour
 
         Vector3 startPos = currentResidueInstance.transform.position;
 
-        // ESTA LÍNEA DE DECLARACIÓN FALTABA:
+        // ESTA Lï¿½NEA DE DECLARACIï¿½N FALTABA:
         Vector3 endPos = targetPoint.position;
         endPos.z = startPos.z;
+
+        // Activar partï¿½culas del residuo durante el movimiento
+        ParticleSystem residueParticleSystem = currentResidueInstance.GetComponent<ParticleSystem>();
+        if (residueParticleSystem != null)
+        {
+            residueParticleSystem.Play();
+        }
 
         float t = 0f;
         while (t < 1f)
@@ -80,14 +133,28 @@ public class ResidueLevelManager : MonoBehaviour
             yield return null;
         }
 
-        // ESTA LÍNEA FALTABA:
+        // ESTA Lï¿½NEA FALTABA:
         currentResidueInstance.transform.position = endPos;
 
-        // LÓGICA DE ACIERTO/FALLO Y AUDIO (Lo que agregamos)
+        // Lï¿½GICA DE ACIERTO/FALLO Y AUDIO (Lo que agregamos)
         bool isCorrect = currentResidueData.kind == directionKind;
 
         if (isCorrect)
         {
+        // Detener las partï¿½culas cuando llegue al tacho
+        if (residueParticleSystem != null)
+        {
+            residueParticleSystem.Stop();
+        }
+
+        // Activar las partï¿½culas al llegar al tacho
+        if (residueParticles != null)
+        {
+            residueParticles.transform.position = endPos;  // Mover las partï¿½culas al tacho
+            residueParticles.Play();  // Reproducir el efecto de partï¿½culas
+        }
+
+        if (currentResidueData.kind == directionKind)
             score += currentResidueData.scoreValue;
 
             // Sonido de ACIERTO
@@ -140,5 +207,23 @@ public class ResidueLevelManager : MonoBehaviour
             Destroy(currentResidueInstance);
             enabled = false;
         }
+    }
+
+    // Funciï¿½n para activar el giroscopio
+    public void ActivateGyroscope()
+    {
+        useGyroscope = true;
+        controlPanel.SetActive(false); // Ocultar el panel de control (mini fondo)
+        Time.timeScale = 1f;  // Reanudar el juego
+        Debug.Log("Control: Giroscopio");
+    }
+
+    // Funciï¿½n para activar el acelerï¿½metro
+    public void ActivateAccelerometer()
+    {
+        useGyroscope = false;
+        controlPanel.SetActive(false); // Ocultar el panel de control (mini fondo)
+        Time.timeScale = 1f;  // Reanudar el juego
+        Debug.Log("Control: Acelerï¿½metro");
     }
 }
