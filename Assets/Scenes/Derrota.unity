@@ -524,6 +524,7 @@ GameObject:
   - component: {fileID: 3286030307100764536}
   - component: {fileID: 9030316693244999064}
   - component: {fileID: 2703927153576553103}
+  - component: {fileID: 9030316693244999065}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -1064,9 +1065,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2703927153576553103}
-        m_TargetAssemblyTypeName: MenuSystem, Assembly-CSharp
-        m_MethodName: Play
+      - m_Target: {fileID: 9030316693244999065}
+        m_TargetAssemblyTypeName: SceneOfDefeat, Assembly-CSharp
+        m_MethodName: OnReplayButtonPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1192,6 +1193,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &9030316693244999065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3325980644071976356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82d068345e9aec34a91d781b26923c68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneOfDefeat
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
