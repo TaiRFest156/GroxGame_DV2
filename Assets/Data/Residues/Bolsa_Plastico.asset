@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e873aa3c9137fe542acad4e57aeb2f1b, type: 3}
-  m_Name: Vidrio
+  m_Name: Bolsa_Plastico
   m_EditorClassIdentifier: Assembly-CSharp::ResidueData
-  residueName: Botella_Vidrio
-  prefab: {fileID: 2925217931086522701, guid: 38372f9c8f7edfc43b40229dd012b7cc, type: 3}
-  kind: 0
+  residueName: Bolsa_Plastico
+  prefab: {fileID: 3268506660474853887, guid: 37eaa691c58def74cad555d0dad73cd8, type: 3}
+  kind: 2
   scoreValue: 100
   penaltyValue: -150
