@@ -15,5 +15,5 @@ MonoBehaviour:
   residueName: Botella_Vidrio
   prefab: {fileID: 2925217931086522701, guid: 38372f9c8f7edfc43b40229dd012b7cc, type: 3}
   kind: 0
-  scoreValue: 10
-  penaltyValue: -5
+  scoreValue: 100
+  penaltyValue: -150

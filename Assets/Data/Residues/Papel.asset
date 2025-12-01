@@ -15,5 +15,5 @@ MonoBehaviour:
   residueName: Diario
   prefab: {fileID: 6290172609653081847, guid: 2cd3c1198df9f524fb5109332d981317, type: 3}
   kind: 1
-  scoreValue: 10
-  penaltyValue: -5
+  scoreValue: 100
+  penaltyValue: -150
