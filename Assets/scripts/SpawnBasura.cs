@@ -51,9 +51,10 @@ public class SpawnBasura : MonoBehaviour
         {
             loader.OnSpawnerFinished();
 
-            //  Aquí verificamos si recogió menos de 5 basuras
+            //  Aquí verifica si recogió menos de 5 basuras
             if (!ReciclajeContador.RecogioMinimoBasuras(5))
             {
+                  Time.timeScale = 1f;
                 PlayerPrefs.SetString("EscenaAnterior", UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
                 UnityEngine.SceneManagement.SceneManager.LoadScene("Derrota");
             }
