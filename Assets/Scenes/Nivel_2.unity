@@ -1054,12 +1054,12 @@ GameObject:
   - component: {fileID: 1023478020}
   - component: {fileID: 1023478019}
   m_Layer: 5
-  m_Name: MiniBackground
+  m_Name: SelectControlBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1023478018
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1428,7 +1428,6 @@ MonoBehaviour:
   scoreText: {fileID: 2071834779}
   timerText: {fileID: 114748172}
   residueParticles: {fileID: 1894535813}
-  controlPanel: {fileID: 1023478017}
 --- !u!4 &1134979836
 Transform:
   m_ObjectHideFlags: 0
