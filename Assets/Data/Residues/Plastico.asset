@@ -15,5 +15,5 @@ MonoBehaviour:
   residueName: Botella_Toxica
   prefab: {fileID: 6269190122354628575, guid: 1799a9ed6ab7f6f42889586fa1898b2d, type: 3}
   kind: 2
-  scoreValue: 10
-  penaltyValue: -5
+  scoreValue: 100
+  penaltyValue: -150

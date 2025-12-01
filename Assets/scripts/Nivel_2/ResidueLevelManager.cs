@@ -28,6 +28,10 @@ public class ResidueLevelManager : MonoBehaviour
 
     public ParticleSystem residueParticles;
 
+    private DefeatManager defeatManager;
+
+    private VictoryManager victoryManager;
+
     // Variable para saber si usar giroscopio o acelerómetro
     private bool useGyroscope = false; // Si es true, usar giroscopio. Si es false, usar acelerómetro.
 
@@ -48,7 +52,11 @@ public class ResidueLevelManager : MonoBehaviour
         {
             useGyroscope = false;
             Debug.LogWarning("Giroscopio no soportado. Usando acelerómetro.");
+
         }
+        defeatManager = Object.FindFirstObjectByType<DefeatManager>();
+
+        victoryManager = Object.FindFirstObjectByType<VictoryManager>();
     }
 
     void Update()
@@ -143,10 +151,15 @@ public class ResidueLevelManager : MonoBehaviour
         }
 
         if (currentResidueData.kind == directionKind)
+        {
             score += currentResidueData.scoreValue;
+            victoryManager.OnCorrectResidue();  // Contabilizar como acierto
+        }
         else
+        {
             score += currentResidueData.penaltyValue;
-
+            victoryManager.OnWrongResidue();  // Contabilizar como error
+        }
         UpdateUI();
 
         Destroy(currentResidueInstance);
@@ -198,5 +211,15 @@ public class ResidueLevelManager : MonoBehaviour
         controlPanel.SetActive(false); // Ocultar el panel de control (mini fondo)
         Time.timeScale = 1f;  // Reanudar el juego
         Debug.Log("Control: Acelerómetro");
+    }
+
+    public int GetScore()
+    {
+        return score;
+    }
+
+    public float GetTimeRemaining()
+    {
+        return timeRemaining;
     }
 }
