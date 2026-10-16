@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnBasura : MonoBehaviour
@@ -12,7 +11,7 @@ public class SpawnBasura : MonoBehaviour
     public float maxX = 5f;
     public float minZ = -5f;
     public float maxZ = 5f;
-    public float spawnY = 1f; // Altura fija
+    public float spawnY = 1f;
 
     [Header("Tiempo entre spawns")]
     public float tiempoInicial = 1.2f;
@@ -20,15 +19,45 @@ public class SpawnBasura : MonoBehaviour
     public float reduccionTiempo = 0.01f;
 
     [Header("Duración del spawner")]
-    public float duracionSpawner = 60f; // 1 minuto
+    public float duracionSpawner = 60f;
 
-    public float tiempoActual;
-    public float tiempoTranscurrido = 0f;
+    private float tiempoActual;
+    private float tiempoTranscurrido = 0f;
+    private Coroutine rutinaSpawner;
 
-    void Start()
+    // Ahora no arranca solo en Start
+    void Awake()
     {
         tiempoActual = tiempoInicial;
-        StartCoroutine(SpawnRoutine());
+    }
+
+    // Método público para iniciar el spawner
+    public void IniciarSpawner()
+    {
+        if (rutinaSpawner == null)
+        {
+            tiempoTranscurrido = 0f;
+            tiempoActual = tiempoInicial;
+            rutinaSpawner = StartCoroutine(SpawnRoutine());
+
+            // Llamar al contador
+            UIContadorTiempo ui = Object.FindFirstObjectByType<UIContadorTiempo>();
+            if (ui != null)
+            {
+                ui.IniciarContador(duracionSpawner);
+            }
+        }
+    }
+
+
+    // Método público para detener el spawner antes de tiempo
+    public void DetenerSpawner()
+    {
+        if (rutinaSpawner != null)
+        {
+            StopCoroutine(rutinaSpawner);
+            rutinaSpawner = null;
+        }
     }
 
     IEnumerator SpawnRoutine()
@@ -46,38 +75,31 @@ public class SpawnBasura : MonoBehaviour
             }
         }
 
+        rutinaSpawner = null; // se libera al terminar
+
         SceneLoader loader = Object.FindFirstObjectByType<SceneLoader>();
         if (loader != null)
         {
             loader.OnSpawnerFinished();
 
-            //  Aquí verifica si recogió menos de 5 basuras
-            if (!ReciclajeContador.RecogioMinimoBasuras(5))
+            if (!ReciclajeContador.SuperoMeta())
             {
-                  Time.timeScale = 1f;
+                Time.timeScale = 1f;
                 PlayerPrefs.SetString("EscenaAnterior", UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
                 UnityEngine.SceneManagement.SceneManager.LoadScene("Derrota");
             }
         }
     }
 
-
     void SpawnearBasura()
     {
         if (basuraPrefabs.Length == 0) return;
 
         GameObject prefab = basuraPrefabs[Random.Range(0, basuraPrefabs.Length)];
-
-        Vector3 spawnPos = new Vector3(
-            Random.Range(minX, maxX),
-            spawnY,
-            Random.Range(minZ, maxZ)
-        );
-
+        Vector3 spawnPos = new Vector3(Random.Range(minX, maxX), spawnY, Random.Range(minZ, maxZ));
         Instantiate(prefab, spawnPos, Quaternion.identity);
     }
 
-    // Visualización del área de spawn en el editor
     void OnDrawGizmos()
     {
         Gizmos.color = Color.green;

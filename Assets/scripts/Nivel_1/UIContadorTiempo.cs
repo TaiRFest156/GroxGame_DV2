@@ -3,18 +3,22 @@ using UnityEngine;
 
 public class UIContadorTiempo : MonoBehaviour
 {
-    public SpawnBasura spawner;
     public TextMeshProUGUI textoTiempo;
 
     private float tiempoRestante;
+    private bool contando;
 
-    void Start()
+    // Este método lo llama el spawner al iniciar
+    public void IniciarContador(float duracion)
     {
-        tiempoRestante = spawner.duracionSpawner;
+        tiempoRestante = duracion;
+        contando = true;
     }
 
     void Update()
     {
+        if (!contando) return;
+
         if (tiempoRestante > 0)
         {
             tiempoRestante -= Time.deltaTime;
