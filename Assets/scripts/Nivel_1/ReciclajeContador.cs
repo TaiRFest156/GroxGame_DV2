@@ -1,8 +1,15 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public static class ReciclajeContador
 {
+    // Puntaje mínimo para pasar el nivel (lo define ObjetivoUI)
+    public static int MetaPuntaje = 10000;
+
+    // Se dispara cada vez que cambia el conteo
+    public static event Action OnConteoCambiado;
+
     // Conteo por tipo de basura
     public static Dictionary<string, int> conteo = new Dictionary<string, int>
     {
@@ -19,10 +26,10 @@ public static class ReciclajeContador
     {
         { "Metal", 4500 },
         { "Plastico", 3000 },
-        { "Vidrio", 10900 },
-        { "Toxico", 10040 },
-        { "Organico",20000 },
-        { "Papel", 12500 }
+        { "Vidrio", 3500 },
+        { "Toxico", 2600 },
+        { "Organico", 2000 },
+        { "Papel", 1500 }
     };
 
     // Registrar un objeto recogido
@@ -30,6 +37,7 @@ public static class ReciclajeContador
     {
         if (!conteo.ContainsKey(tipo)) return;
         conteo[tipo]++;
+        OnConteoCambiado?.Invoke();
     }
 
     // Resetear el conteo
@@ -37,6 +45,7 @@ public static class ReciclajeContador
     {
         var keys = new List<string>(conteo.Keys);
         foreach (var k in keys) conteo[k] = 0;
+        OnConteoCambiado?.Invoke();
     }
 
     // Calcular puntaje total
@@ -52,14 +61,9 @@ public static class ReciclajeContador
         return total;
     }
 
-    //  Nueva función: verificar si se recogieron al menos 5 basuras
-    public static bool RecogioMinimoBasuras(int minimo = 5)
+    // ¿Alcanzó la meta de puntaje?
+    public static bool SuperoMeta()
     {
-        int totalRecogidas = 0;
-        foreach (var cantidad in conteo.Values)
-        {
-            totalRecogidas += cantidad;
-        }
-        return totalRecogidas >= minimo;
+        return CalcularPuntajeTotal() >= MetaPuntaje;
     }
 }
