@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
@@ -7,32 +6,51 @@ public class SceneLoader : MonoBehaviour
     public GameObject panelResultados;
     public PanelMover panelMover;
 
+    [Header("Puerta bloqueada")]
+    public GameObject puertaBloqueada;
 
     private void Start()
     {
-        // Ya no desactivamos el panel al inicio
-        // Si querés ocultarlo, hacelo moviéndolo fuera de la vista o con CanvasGroup
+        // El panel de resultados se mantiene como lo tengas configurado.
     }
 
-    // Llamás este método cuando tu spawner termina
+    // Se llama cuando termina el spawner
     public void OnSpawnerFinished()
     {
         // Mostrar resultados
         if (ReciclajeUI.Instance != null)
+        {
             ReciclajeUI.Instance.MostrarResultados();
+        }
 
-        // Pausar juego
+        // Pausar el juego
         Time.timeScale = 0f;
 
-        // Activar movimiento del panel
+        // Activar el movimiento del panel
         if (panelMover != null)
+        {
             panelMover.ActivarMovimiento();
+        }
     }
 
-    // Método público que se conecta al botón Next
+    // Se llama al pulsar el botón Next
     public void CargarSiguienteEscena()
     {
+        // Ocultar el panel de resultados
+        if (panelResultados != null)
+        {
+            panelResultados.SetActive(false);
+        }
+
+        // Desbloquear la puerta
+        if (puertaBloqueada != null)
+        {
+            puertaBloqueada.SetActive(false);
+        }
+
+        // Reanudar el juego
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Nivel_2"); // nombre exacto de la escena
+
+        Debug.Log("Resultados ocultos. Puerta desbloqueada.");
     }
 }
