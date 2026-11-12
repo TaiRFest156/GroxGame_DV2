@@ -1913,6 +1913,73 @@ RectTransform:
   m_AnchoredPosition: {x: 30.801304, y: -83.54834}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &579612426
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 579612428}
+  - component: {fileID: 579612427}
+  m_Layer: 0
+  m_Name: ManualSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &579612427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 579612426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46249130ecea70f4eaeb94bb5096d6cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ManualSystem
+  datos: {fileID: 11400000, guid: 9a0b7505e5627af41bbd62b09178bf42, type: 2}
+  paginaInicial: 5
+  introAutomatica: 1
+  textoIntro: "\xA1Aprendamos a jugar!"
+  esperaInicial: 1
+  duracionTextoIntro: 2.5
+  soloUnaVezPorSesion: 1
+  botonManual: {fileID: 0}
+  crearBotonFlotante: 1
+  iconoBoton: {fileID: 0}
+  posicionBoton: {x: -230, y: -80}
+  tamanoBoton: 110
+  colorCubierta: {r: 0.13725491, g: 0.105882354, b: 0.29411766, a: 1}
+  colorAcento: {r: 0.18039216, g: 0.9019608, b: 0.6509804, a: 1}
+  colorPapel: {r: 1, g: 0.95686275, b: 0.8627451, a: 1}
+  colorTexto: {r: 0.16862746, g: 0.14509805, b: 0.2509804, a: 1}
+  colorAcentoPapel: {r: 0.05490196, g: 0.62352943, b: 0.46666667, a: 1}
+  fuente: {fileID: 0}
+  duracionVolteo: 0.45
+  ordenCanvas: 500
+  sonidoAbrir: {fileID: 0}
+  sonidoPagina: {fileID: 0}
+  sonidoIntro: {fileID: 0}
+--- !u!4 &579612428
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 579612426}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &592322626
 GameObject:
   m_ObjectHideFlags: 0
@@ -7101,3 +7168,4 @@ SceneRoots:
   - {fileID: 1116744501}
   - {fileID: 1917742638}
   - {fileID: 1782819929}
+  - {fileID: 579612428}

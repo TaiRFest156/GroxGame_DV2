@@ -1,0 +1,138 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5871a049bd07304aaa184c3c32d855c, type: 3}
+  m_Name: ManualGrox
+  m_EditorClassIdentifier: Assembly-CSharp::ManualData
+  paginas:
+  - etiqueta: Bienvenida
+    titulo: "Manual Intergal\xE1ctico de Reciclaje"
+    texto: "Hola, Grox. Este libro te ense\xF1a todo lo que necesitas para limpiar
+      Nimbus-072: c\xF3mo moverte, c\xF3mo jugar cada nivel y, lo m\xE1s importante,
+      c\xF3mo reciclar de verdad.\n\nPasa las hojas con las flechas o deslizando
+      el dedo.\n\nPuedes abrir este manual cuando quieras con el bot\xF3n del libro."
+    imagen: {fileID: 0}
+  - etiqueta: Historia
+    titulo: Nimbus-072 necesita ayuda
+    texto: "En un futuro lejano, la humanidad produjo tanta basura que decidi\xF3
+      mandarla al espacio. Por accidente, los desechos cayeron sobre Nimbus-072,
+      un planeta pac\xEDfico.\n\nGrox, un marciano curioso y responsable, es el encargado
+      de limpiarlo con su <b>Pistola de Rayo Recolector</b> antes de que el ecosistema
+      colapse."
+    imagen: {fileID: 0}
+  - etiqueta: Controles
+    titulo: Moverte y recolectar
+    texto: "<b>Joystick t\xE1ctil:</b> a la izquierda de la pantalla, para mover
+      a Grox.\n\n<b>Apuntar:</b> dirige la c\xE1mara hacia la basura. El rayo sale
+      justo del centro de la pantalla.\n\n<b>Tocar la pantalla:</b> toca la mitad
+      derecha para disparar el Rayo Recolector."
+    imagen: {fileID: 0}
+  - etiqueta: Controles
+    titulo: Inclinar, combinar y pausar
+    texto: "<b>Nivel 2:</b> inclina el celular hacia la izquierda, la derecha o arriba
+      para lanzar cada residuo a su contenedor.\n\n<b>Nivel 3:</b> toca los 4 botones
+      de colores para fabricar objetos.\n\n<b>Pausa:</b> bot\xF3n de la esquina superior
+      derecha.\n<b>Manual:</b> el icono del libro."
+    imagen: {fileID: 0}
+  - etiqueta: Nivel 1
+    titulo: Rayo Recolector
+    texto: "La basura cae sobre el planeta. \xA1Atr\xE1pala antes de que lo contamine!\n\n<b>C\xF3mo
+      ganar:</b> recolecta suficiente basura antes de que se acabe el tiempo y llena
+      la barra de objetivo.\n\n<b>C\xF3mo perder:</b> si el tiempo termina y no llegaste
+      a la meta, Nimbus-072 se contamina."
+    imagen: {fileID: 0}
+  - etiqueta: Nivel 1
+    titulo: Consejos del Nivel 1
+    texto: "Apunta con calma: el rayo necesita un breve descanso entre disparos.\n\nNo
+      todos los residuos valen lo mismo: algunos dan m\xE1s puntos.\n\nMira el color
+      del planeta: <b>verde</b> es limpio y <b>gris</b> es contaminado."
+    imagen: {fileID: 0}
+  - etiqueta: Nivel 2
+    titulo: "Clasificaci\xF3n gestual"
+    texto: "Cada residuo que aparece debe ir a su contenedor.\n\n<b>Inclina a la
+      izquierda:</b> papel.\n<b>Inclina a la derecha:</b> pl\xE1stico.\n<b>Inclina
+      hacia arriba:</b> vidrio.\n\n<b>C\xF3mo ganar:</b> llega a 1050 puntos antes
+      de que termine el tiempo."
+    imagen: {fileID: 0}
+  - etiqueta: Nivel 2
+    titulo: Consejos del Nivel 2
+    texto: "Mira bien el residuo antes de inclinar: un error puede restarte puntos.\n\n<b>Cuidado:</b>
+      si fallas 4 veces seguidas, pierdes el nivel.\n\nSi al terminar el tiempo no
+      llegaste a 1050 puntos, tendr\xE1s que intentarlo otra vez."
+    imagen: {fileID: 0}
+  - etiqueta: Nivel 3
+    titulo: La cinta transportadora
+    texto: "Una cinta lleva pl\xE1sticos reciclados, desordenados, de izquierda a
+      derecha.\n\n<b>Salta</b> sobre la primera m\xE1quina en el momento justo para
+      convertir la pila en cubos de pl\xE1stico compacto.\n\nCuidado: la cinta se
+      acelera poco a poco."
+    imagen: {fileID: 0}
+  - etiqueta: Nivel 3
+    titulo: "La m\xE1quina de fabricar"
+    texto: "Los cubos llegan a la segunda m\xE1quina, donde Grox se teletransporta.
+      La pantalla pide un objeto: una bolsa, una botella, una remera...\n\nIngresa
+      la secuencia correcta con los 4 botones de colores.\n\n<b>Tienes 3 vidas.</b>
+      Pierdes si fallas 3 veces o si el material llega al final de la cinta sin procesar."
+    imagen: {fileID: 0}
+  - etiqueta: Reciclaje
+    titulo: Los residuos de Nimbus
+    texto: "En tu aventura encontrar\xE1s residuos de varios tipos:\n\n<b>Papel y
+      cart\xF3n</b>, <b>pl\xE1stico</b> y <b>vidrio</b>: se pueden reciclar.\n<b>Metal</b>
+      (como las latas): tambi\xE9n se recicla.\n<b>Org\xE1nicos</b> (restos de comida):
+      pueden convertirse en compost.\n<b>T\xF3xicos</b> (como las pilas): necesitan
+      un cuidado especial."
+    imagen: {fileID: 0}
+  - etiqueta: "Reciclaje \xB7 Nivel 1"
+    titulo: Recoger y no ensuciar
+    texto: "En el Nivel 1 limpias el planeta. En la vida real, la basura tirada en
+      el suelo llega a alcantarillas, r\xEDos y mares, y da\xF1a a los animales.\n\nSe
+      estima que un papel tarda semanas o meses en desaparecer, una botella de pl\xE1stico
+      cientos de a\xF1os y el vidrio miles.\n\n<b>Siempre usa un cesto.</b>"
+    imagen: {fileID: 0}
+  - etiqueta: "Reciclaje \xB7 Nivel 2"
+    titulo: Separar bien
+    texto: "En el Nivel 2 clasificas. En casa tambi\xE9n:\n\n<b>Papel y cart\xF3n:</b>
+      limpios y secos, sin grasa.\n<b>Pl\xE1stico:</b> envases vac\xEDos, enjuagados
+      y aplastados.\n<b>Vidrio:</b> botellas y frascos vac\xEDos. \xA1Se puede reciclar
+      muchas veces!\n<b>Pilas:</b> ll\xE9valas a un punto de recolecci\xF3n.\n\nLos
+      colores de los contenedores cambian seg\xFAn la ciudad: pregunta en tu municipio."
+    imagen: {fileID: 0}
+  - etiqueta: "Reciclaje \xB7 Nivel 3"
+    titulo: De residuo a recurso
+    texto: "En el Nivel 3 el pl\xE1stico se compacta y se transforma en objetos nuevos:
+      bolsas, prendas, envases. Eso se llama <b>econom\xEDa circular</b>: lo que
+      ya usamos vuelve a ser \xFAtil en vez de terminar como basura.\n\nReciclar
+      ahorra materias primas y energ\xEDa, y crea trabajo. Separar bien ayuda a quienes
+      clasifican los residuos."
+    imagen: {fileID: 0}
+  - etiqueta: Reciclaje
+    titulo: Las 3R
+    texto: '<b>Reducir:</b> usa menos cosas descartables. Lleva tu propia botella
+      y tu bolsa.
+
+
+      <b>Reutilizar:</b> dale una segunda vida a frascos, cajas
+      y ropa.
+
+
+      <b>Reciclar:</b> separa lo que ya no puedes reutilizar.
+
+
+      El
+      mejor residuo es el que nunca se genera.'
+    imagen: {fileID: 0}
+  - etiqueta: "\xA1Tu turno!"
+    titulo: Ahora te toca a ti
+    texto: "Grox ya limpi\xF3 Nimbus-072, pero la Tierra tambi\xE9n cuenta contigo.\n\n1.
+      Ten un cesto para reciclables y otro para el resto.\n2. Enjuaga y aplasta los
+      envases.\n3. Lleva tu propia bolsa.\n4. Cu\xE9ntale a alguien lo que aprendiste.\n\nPuedes
+      volver a leer este manual cuando quieras."
+    imagen: {fileID: 0}
