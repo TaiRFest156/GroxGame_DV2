@@ -1,21 +1,21 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // Para cambiar de escena
+using UnityEngine.SceneManagement;
 
 public class DefeatManager : MonoBehaviour
 {
-    private int consecutiveMistakes = 0;  // Para contar los errores consecutivos
-    private int maxConsecutiveMistakes = 4;  // El límite de errores seguidos
-    private int minScoreToLose = 1000;  // Puntaje mínimo para perder
+    private int consecutiveMistakes = 0;      // Errores consecutivos
+    private int maxConsecutiveMistakes = 4;   // Limite de errores seguidos
+    private int minScoreToWin = 1050;         // Debe coincidir con VictoryManager
+    private bool defeatTriggered = false;     // Evita disparar la derrota dos veces
 
     private ResidueLevelManager levelManager;
 
     void Start()
     {
-        // Obtener una referencia al LevelManager
         levelManager = Object.FindFirstObjectByType<ResidueLevelManager>();
     }
 
-    // Llamar a esta función cuando el jugador comete un error
+    // Llamar cuando el jugador comete un error
     public void PlayerMadeMistake()
     {
         consecutiveMistakes++;
@@ -26,25 +26,32 @@ public class DefeatManager : MonoBehaviour
         }
     }
 
-    // Llamar a esta función cuando el jugador lanza el residuo correctamente
+    // Llamar cuando el jugador acierta
     public void PlayerCorrectThrow()
     {
-        consecutiveMistakes = 0;  // Resetear los errores consecutivos
+        consecutiveMistakes = 0;
     }
 
-    // Comprobar si el puntaje es demasiado bajo al final del tiempo
+    // Al acabarse el tiempo: si no llego a la meta, pierde
     public void CheckForTimeOutDefeat()
     {
-        if (levelManager.GetScore() <= minScoreToLose)
+        if (levelManager != null && levelManager.GetScore() < minScoreToWin)
         {
             TriggerDefeat();
         }
     }
 
-    // Función para activar la derrota y cambiar de escena
     private void TriggerDefeat()
     {
-        // Cambiar a la escena de derrota
+        if (defeatTriggered) return;
+        defeatTriggered = true;
+
+        Time.timeScale = 1f;
+
+        // CLAVE: guardar de que nivel venimos, para que "Reintentar" vuelva aqui
+        // (SpawnBasura del Nivel 1 ya hace lo mismo).
+        PlayerPrefs.SetString("EscenaAnterior", SceneManager.GetActiveScene().name);
+
         SceneManager.LoadScene("Derrota");
     }
 }
