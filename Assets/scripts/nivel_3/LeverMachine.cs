@@ -21,7 +21,7 @@ public class LeverMachine : MonoBehaviour, IInteractable
 
     [Header("Objeto que baja en Y")]
     [SerializeField] private Transform movingObject;
-    [SerializeField] private float moveDownDistance = 0.5f;   // Cu·nto baja en Y (unidades locales)
+    [SerializeField] private float moveDownDistance = 0.5f;   // Cu√°nto baja en Y (unidades locales)
     [SerializeField] private bool returnObjectOnReset = true; // Sube junto con la prensa al resetear
 
     [Header("Reset")]
@@ -31,14 +31,19 @@ public class LeverMachine : MonoBehaviour, IInteractable
     [SerializeField] private ObjectSpawner spawner;
 
     [Header("Eventos")]
-    public UnityEvent onMinigameReady;   // AquÌ conectar·s el minijuego despuÈs
+    public UnityEvent onMinigameReady;   // Aqu√≠ conectar√°s el minijuego despu√©s
+
+    // --- Agregado para el Nivel 3 (Nivel3Manager) ---
+    [HideInInspector] public bool Bloqueada;           // el manager la bloquea fuera de su fase
+    public event System.Action OnPulled;               // se dispara al jalar la palanca
+    public bool EstaEnMarcha => running;               // true mientras dura toda la secuencia
 
     private int leverIndex, pressIndex;
     private bool running;
     private bool objectArrived;
     private Vector3 objectStartPos;
 
-    public bool CanInteract => !running;
+    public bool CanInteract => !running && !Bloqueada;
 
     private void Start()
     {
@@ -46,7 +51,7 @@ public class LeverMachine : MonoBehaviour, IInteractable
         pressIndex = meshRenderer.sharedMesh.GetBlendShapeIndex(pressKeyName);
 
         if (leverIndex < 0 || pressIndex < 0)
-            Debug.LogError("No encontrÈ las shape keys. Revisa los nombres en el Inspector.");
+            Debug.LogError("No encontr√© las shape keys. Revisa los nombres en el Inspector.");
 
         if (movingObject != null) objectStartPos = movingObject.localPosition;
 
@@ -55,7 +60,9 @@ public class LeverMachine : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        if (!running) StartCoroutine(Sequence());
+        if (running || Bloqueada) return;
+        if (OnPulled != null) OnPulled();
+        StartCoroutine(Sequence());
     }
 
     private IEnumerator Sequence()
@@ -63,7 +70,7 @@ public class LeverMachine : MonoBehaviour, IInteractable
         running = true;
         objectArrived = false;
 
-        // PosiciÛn inicial
+        // Posici√≥n inicial
         meshRenderer.SetBlendShapeWeight(leverIndex, 0);
         meshRenderer.SetBlendShapeWeight(pressIndex, pressStartValue);
         if (movingObject != null) movingObject.localPosition = objectStartPos;
@@ -89,7 +96,7 @@ public class LeverMachine : MonoBehaviour, IInteractable
         // 7. Espera a que el objeto se destruya
         yield return new WaitUntil(() => spawner.Current == null);
 
-        // 8. Sube la palanca (r·pido) y la prensa regresa en el mismo tiempo que bajÛ
+        // 8. Sube la palanca (r√°pido) y la prensa regresa en el mismo tiempo que baj√≥
         StartCoroutine(AnimateLever(100, 0, leverResetDuration));
         yield return AnimatePress(pressEndValue, pressStartValue, pressDuration);
 
@@ -124,7 +131,7 @@ public class LeverMachine : MonoBehaviour, IInteractable
         if (!goingBack || returnObjectOnReset) MoveObject(to);
     }
 
-    // 0 cuando Key 1 est· en el umbral (38.8), 1 cuando llega al valor final
+    // 0 cuando Key 1 est√° en el umbral (38.8), 1 cuando llega al valor final
     private void MoveObject(float pressValue)
     {
         if (movingObject == null) return;
